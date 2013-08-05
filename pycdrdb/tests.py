@@ -3,6 +3,7 @@ from dbaccess import *
 from models import *
 from sqlalchemy.orm import mapper
 import settings as s
+from termprint import *
 
 auth = {'dbhost': getattr(s, "DB_HOST"), \
         'dbuser': getattr(s, "DB_USER"), \
