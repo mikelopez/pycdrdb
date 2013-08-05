@@ -29,7 +29,7 @@ class TestConnection(TestCase):
         cl = db(**auth)
         cl.connect()
         cdr_table = cl.map_table(CDR, cdr, autoload=False, sip_table=True)
-        cl.filter(cdr_table, "dst", getattr(s, "TEST_SEARCH_NUMBER", "7861111111")
+        cl.filter(cdr_table, "dst", getattr(s, "TEST_SEARCH_NUMBER", "7861111111"))
 
 
 
