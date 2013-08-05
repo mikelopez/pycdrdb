@@ -28,7 +28,7 @@ class TestConnection(TestCase):
         """ Test a filter by search """
         cl = db(**auth)
         cl.connect()
-        cdr_table = cl.map_table(CDR, cdr, autoload=False, sip_table=True)
+        cdr_table = cl.map_table(CDR, cdr, autoload=False, skip_table=True)
         cl.filter(cdr_table, "dst", getattr(s, "TEST_SEARCH_NUMBER", "7861111111"))
 
 
