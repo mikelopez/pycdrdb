@@ -1,7 +1,7 @@
 from distutils.core import setup
 
 setup(name='pycdrdb',
-      version='0.1',
+      version='1.0',
       description='Description for pycdrdb',
       author='',
       license='MIT',
