@@ -1,11 +1,8 @@
-try:
-    import local_settings as s
-except ImportError:
-    pass
 from unittest import TestCase, TestSuite, TextTestRunner
 from dbaccess import *
 from models import CDR
 from sqlalchemy.orm import mapper
+import settings as s
 
 auth = {'dbhost': getattr(s, "DB_HOST"), \
         'dbuser': getattr(s, "DB_USER"), \
