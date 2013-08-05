@@ -1,8 +1,8 @@
 try:
     import local_settings as s
-    tbl = getattr(s, "CDR_TABLE", "asteriskcdrdb")
+    tbl = getattr(s, "CDR_TABLE", "cdr")
 except ImportError:
-    tbl = "asteriskcdrdb"
+    tbl = "cdr"
 
 from sqlalchemy import Table, MetaData, Column, ForeignKey, \
 Integer, String
@@ -10,7 +10,7 @@ from sqlalchemy.orm import mapper
 
 metadata = MetaData()
 
-cdr = Table('asteriskcdrdb', metadata,
+cdr = Table(tbl, metadata,
             Column('id', Integer, primary_key=True),
             Column('name', String(50)),)
 

@@ -10,4 +10,4 @@ Use the following variables in local_settings to override default behavior or se
 * DB_USER = Database username 
 * DB_PASS = The database password
 * DB_NAME = Name of the database
-* CDR_TABLE = Table name of the Asterisk CDR table. Defaults to ``asteriskcdrdb``
+* CDR_TABLE = Table name of the Asterisk CDR table. Defaults to ``cdr``
