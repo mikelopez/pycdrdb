@@ -1,6 +1,6 @@
 from unittest import TestCase, TestSuite, TextTestRunner
 from dbaccess import *
-from models import CDR
+from models import *
 from sqlalchemy.orm import mapper
 import settings as s
 
@@ -20,8 +20,8 @@ class TestConnection(TestCase):
         """ Test the model (table) structure. """
         cl = db(**auth)
         cl.connect()
-        cl.map_tables(cdr, CDR, autoload=False)
-        termprint("INFO", CDR.__dict__)
+        cdr_table = cl.map_table(CDR, cdr, autoload=False, skip_table=True)
+        termprint("INFO", cdr_table.__dict__)
         
 
 

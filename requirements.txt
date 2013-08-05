@@ -3,3 +3,4 @@ termcolor==1.1.0
 termprint==0.1
 git+git://git@github.com/mikelopez/pyextsql.git
 sqlalchemy
+git+git://git@github.com/mikelopez/termprint.git
