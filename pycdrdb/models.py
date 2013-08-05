@@ -11,8 +11,22 @@ from sqlalchemy.orm import mapper
 metadata = MetaData()
 
 cdr = Table(tbl, metadata,
-            Column('id', Integer, primary_key=True),
-            Column('name', String(50)),)
+            Column('calldate', DateTime, primary_key=True),
+            Column('clid', String(240)),
+            Column('src', String(240)),
+            Column('dst', String(240)),
+            Column('dcontext', String(240)),
+            Column('channel', String(240)),
+            Column('dstchannel', String(240)),
+            Column('lastapp', String(240)),
+            Column('lastdata', String(240)),
+            Column('duration', Integer),
+            Column('billsec', Integer),
+            Column('disposition', String(135)),
+            Column('amaflags', Integer),
+            Column('accoutcode', String(60)),
+            Column('uniqueid', String(96)),
+            Column('userfield', String(765),)
 
 class CDR(object):
     pass
