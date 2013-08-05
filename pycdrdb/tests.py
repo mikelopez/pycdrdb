@@ -1,40 +1,40 @@
 from unittest import TestCase, TestSuite, TextTestRunner
 from dbaccess import *
 from models import *
-from sqlalchemy.orm import mapper
 import settings as s
 from termprint import *
 
-auth = {'dbhost': getattr(s, "DB_HOST"), \
-        'dbuser': getattr(s, "DB_USER"), \
-        'dbpass': getattr(s, "DB_PASS"), \
-        'dbname': getattr(s, "DB_NAME")}
+auth = (getattr(s, "DB_HOST"), 
+        getattr(s, "DB_USER"), 
+        getattr(s, "DB_PASS"), 
+        getattr(s, "DB_NAME"),)
 
 class TestConnection(TestCase):
     def test_connection(self):
         """ Test the connection to the database server. """
-        cl = db(**auth)
-        cl.connect()
-        self.assertTrue(cl.connection)
+        session, metadata, connection = db(*auth)
+        self.assertTrue(session)
+        self.assertTrue(connection)
+        self.assertTrue(metadata)
+        db_disconnect(connection)
 
-    def test_model(self):
+    def test_model_and_search(self):
         """ Test the model (table) structure. """
-        cl = db(**auth)
-        cl.connect()
-        cdr_table = cl.map_table(CDR, cdr, autoload=False, skip_table=True)
+        session, metadata, connection = db(*auth)
+        cdr_table = map_table(metadata, CDR, cdr, autoload=False, skip_table=True)
+        results = db_filter(session, cdr_table, "dst", getattr(s, "TEST_SEARCH_NUMBER", "7861111111"))
         termprint("INFO", cdr_table.__dict__)
-        
-    def test_search(self):
-        """ Test a filter by search """
-        cl = db(**auth)
-        cl.connect()
-        cdr_table = cl.map_table(CDR, cdr, autoload=False, skip_table=True)
-        cl.filter(cdr_table, "dst", getattr(s, "TEST_SEARCH_NUMBER", "7861111111"))
-
+        termprint("WARNING", results)
+        for i in results:
+            termprint("INFO", i.calldate)
+            for k, v in i.__dict__.items():
+                termprint("ERROR", "\t%s = %s" % (k, v))
+            termprint("INFO", "\n-------------------\n\n")
+        db_disconnect(connection)
 
 
 if __name__ == '__main__':
     suite = TestSuite()
     suite.addTest(TestConnection("test_connection"))
-    suite.addTest(TestConnection("test_model"))
+    suite.addTest(TestConnection("test_model_and_search"))
     TextTestRunner(verbosity=2).run(suite)

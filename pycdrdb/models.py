@@ -24,7 +24,7 @@ cdr = Table(tbl, metadata,
             Column('billsec', Integer),
             Column('disposition', String(135)),
             Column('amaflags', Integer),
-            Column('accoutcode', String(60)),
+            Column('accountcode', String(60)),
             Column('uniqueid', String(96)),
             Column('userfield', String(765)),)
 
