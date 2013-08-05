@@ -11,3 +11,4 @@ Use the following variables in local_settings to override default behavior or se
 * DB_PASS = The database password
 * DB_NAME = Name of the database
 * CDR_TABLE = Table name of the Asterisk CDR table. Defaults to ``cdr``
+* TEST_SEARCH_NUMBER = Test phone number to use when searching the database in ``tests.py``

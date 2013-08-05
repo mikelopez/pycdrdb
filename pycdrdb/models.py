@@ -5,7 +5,7 @@ except ImportError:
     tbl = "cdr"
 
 from sqlalchemy import Table, MetaData, Column, ForeignKey, \
-Integer, String
+Integer, String, DateTime
 from sqlalchemy.orm import mapper
 
 metadata = MetaData()
@@ -26,7 +26,7 @@ cdr = Table(tbl, metadata,
             Column('amaflags', Integer),
             Column('accoutcode', String(60)),
             Column('uniqueid', String(96)),
-            Column('userfield', String(765),)
+            Column('userfield', String(765)),)
 
 class CDR(object):
     pass
