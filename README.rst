@@ -6,6 +6,7 @@ Lightweight Asterisk CDR wrapper with Python and SQLAlchemy
 Settings
 ========
 Use the following variables in local_settings to override default behavior or set your authentication defaults. Otherwise, you can provide them when you instantiate the class.
+
 * DB_HOST = The hostname of the db
 * DB_USER = Database username 
 * DB_PASS = The database password
