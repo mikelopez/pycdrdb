@@ -10,6 +10,7 @@ from sqlalchemy.orm import mapper
 
 metadata = MetaData()
 
+# tables below would need to be mapped to a class
 cdr = Table(tbl, metadata,
             Column('calldate', DateTime, primary_key=True),
             Column('clid', String(240)),
@@ -28,8 +29,5 @@ cdr = Table(tbl, metadata,
             Column('uniqueid', String(96)),
             Column('userfield', String(765)),)
 
-class CDR(object):
-    pass
 
-# automap?
-#mapper(CDR, cdr)
+
