@@ -1,12 +1,12 @@
+from sqlalchemy import Table, MetaData, Column, ForeignKey, \
+Integer, String, DateTime
+from sqlalchemy.orm import mapper
+
 try:
     import local_settings as s
     tbl = getattr(s, "CDR_TABLE", "cdr")
 except ImportError:
     tbl = "cdr"
-
-from sqlalchemy import Table, MetaData, Column, ForeignKey, \
-Integer, String, DateTime
-from sqlalchemy.orm import mapper
 
 metadata = MetaData()
 
