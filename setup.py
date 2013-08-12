@@ -5,7 +5,7 @@ setup(name='pycdrdb',
       description='Description for pycdrdb',
       author='',
       license='MIT',
-      py_modules=['pycdrdb'],
+      py_modules=['pycdrdb.models'],
       classifiers=[
           'Development Status :: 5 - Production/Stable',
           'Environment :: Console',
